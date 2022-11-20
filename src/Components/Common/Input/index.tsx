@@ -29,13 +29,13 @@ const Input = ({
   view,
   ...rest
 }: InputProps) => {
-  const getError = (name: string, errors: FieldErrors) => {
+  const getError = (name: any, errors: FieldErrors) => {
     if (!Object.keys(errors).length) return undefined;
 
     return name
       .split(".")
-      .map((item) => item.replaceAll("[", "").replaceAll("]", ""))
-      .reduce((prev, curr) => (prev ? prev[curr] : prev), errors);
+      .map((item: any) => item.replaceAll("[", "").replaceAll("]", ""))
+      .reduce((prev: any, curr: any) => (prev ? prev[curr] : prev), errors);
   };
 
   const error = getError(name as string, errors);
